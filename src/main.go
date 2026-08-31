@@ -2,9 +2,10 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"lexi/books/db"
-	_ "lexi/books/docs"
+	"lexi/books/docs"
 	"lexi/books/queue"
 	"lexi/books/repositories"
 	"lexi/books/routes"
@@ -56,8 +57,16 @@ func main() {
 	universeService := service.NewUniverseService(universeRepository, serieRepository)
 	universeHandler := routes.NewUniverseHandler(universeService)
 
+	// detrás del ingress este servicio se sirve bajo /api/books: swagger-ui
+	// y openapi.json necesitan el prefijo para generar/servir URLs correctas.
+	rootPath := os.Getenv("ROOT_PATH")
+	if rootPath == "" {
+		rootPath = "/"
+	}
+	docs.SwaggerInfo.BasePath = rootPath
+
 	server := gin.Default()
-	routes.RegisterRoutes(server, bookHandler, universeHandler, serieHandler, keys)
+	routes.RegisterRoutes(server, bookHandler, universeHandler, serieHandler, keys, rootPath)
 
 	server.Run(":8080")
 }

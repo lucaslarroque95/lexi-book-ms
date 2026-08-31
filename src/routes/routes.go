@@ -1,6 +1,9 @@
 package routes
 
 import (
+	"net/http"
+	"path"
+
 	"lexi/books/middlewares"
 	"lexi/books/utils"
 
@@ -9,11 +12,20 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-func RegisterRoutes(router *gin.Engine, bookHandler *BookHandler, universeHandler *UniverseHandler, serieHandler *SerieHandler, keys utils.Keys) {
+func RegisterRoutes(router *gin.Engine, bookHandler *BookHandler, universeHandler *UniverseHandler, serieHandler *SerieHandler, keys utils.Keys, rootPath string) {
 	router.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "ok"})
 	})
 
+	// el 301 default de gin para "/swagger" -> "/swagger/" es root-relative
+	// y pierde el prefijo que agrega el ingress (/api/books); se redirige
+	// explícitamente a la URL completa con el rootPath. ("/swagger/" en sí
+	// no se registra aparte: cae en el wildcard de abajo y gin-swagger ya
+	// devuelve 404 ahí salvo que se pida un archivo puntual, ej. index.html.)
+	swaggerIndex := path.Join(rootPath, "swagger", "index.html")
+	router.GET("/swagger", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, swaggerIndex)
+	})
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	user := router.Group("/")
