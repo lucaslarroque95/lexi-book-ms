@@ -1,0 +1,11 @@
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGxleGkuY29tIiwiZXhwIjoxNzg3ODY2ODM2LCJyb2xlIjoiYWRtaW4iLCJ1c2VySWQiOiIzM2I0Y2MyYi1mMWE3LTRmZjctYWJmZS1iZDc5OWYyMDVlZTQifQ.cVA9eu5LQop4ejnSHbqVs8kULM3q2UCzK4RSYYgTW0TcCesN8CkvHfR_jMnk6-64U7psOlPuH2jwwKi-qStfG8zEMpC7j9_hY0mu8_ccSsuTBk_5lwFQ4h0nY97LPCfjSdtrSLatsyBZLeDbBkhnogpTTULRa3LlgdrQetCH0Ye8_jY6rWc9xciEznvLFVcWg_bscrrSgnWZqSSR1xtkqZo4eXHL4qurFgd-uIsiNzzw5UknUvrryHwwFLPWKgQ9RN3lX-Fg9ZyDFjfR7WSF1h4WMOZ7Ax8JWMlmev21AMO6VFKZ1wLRAL60963-D9OcT-Q3cyVjA5WHf4baS0omTg
+
+POST http://localhost:8080/series
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "serie": "Mistborn Era One",
+    "universeId": "2f6092fa-f44a-44bd-b2b9-91d00e433504",
+    "universePosition": 1
+}

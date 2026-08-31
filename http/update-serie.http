@@ -1,0 +1,9 @@
+@token = <PASTE_A_VALID_TOKEN_FROM_LEXI_USERS_MS>
+
+PUT http://localhost:8080/series/1
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "serie": "Mistborn: Era One"
+}

@@ -1,0 +1,21 @@
+@token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGxleGkuY29tIiwiZXhwIjoxNzg3Nzg3NDA5LCJyb2xlIjoiYWRtaW4iLCJ1c2VySWQiOjN9.U1UDE9p1olI-GPP5kJVWXli3rnTUSt02ZyFzRkLVguds32So2XPu0Jd3d5UN3Vk20LUyYKAK-RcgR2r6wGUzWymwlncB0mjqQWsV-12lviji96pI_G7ELHUzio_sbDyu4LaPDpIjpazssVLeXpmyQ2pxrq68rn4IehU8tTyG_gMFi9imRXBcYib1-5uzE4io1HJalqE8Gael_5hqLbdRAScviCgFAq4vuWLJieojTz9ppncOuxDvdnTL5vFtsZlr7XEEtXBb22QlEvnt4syskkXexew5i-M2zoZuXxKengz0dTCkuNK7bzLHOG4EMnhauNPjk2eZKHFnflw-hFRw7w
+
+### All books
+GET http://localhost:8080/books
+Authorization: {{token}}
+
+### Filter by serie
+GET http://localhost:8080/books?serieId=1
+Authorization: {{token}}
+
+### Filter by universe
+GET http://localhost:8080/books?universeId=1
+Authorization: {{token}}
+
+### Filter by exact position in the serie
+GET http://localhost:8080/books?bookPosition=2
+Authorization: {{token}}
+
+### Filter by position <= 2 in the serie
+GET http://localhost:8080/books?maxBookPosition=2
+Authorization: {{token}}

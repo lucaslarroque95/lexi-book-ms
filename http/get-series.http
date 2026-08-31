@@ -1,0 +1,17 @@
+@token = <PASTE_A_VALID_TOKEN_FROM_LEXI_USERS_MS>
+
+### All series
+GET http://localhost:8080/series
+Authorization: {{token}}
+
+### Filter by universe
+GET http://localhost:8080/series?universeId=1
+Authorization: {{token}}
+
+### Filter by exact position in the universe
+GET http://localhost:8080/series?universePosition=1
+Authorization: {{token}}
+
+### Filter by position <= 2 in the universe
+GET http://localhost:8080/series?maxUniversePosition=2
+Authorization: {{token}}

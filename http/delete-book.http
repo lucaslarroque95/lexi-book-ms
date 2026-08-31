@@ -1,0 +1,4 @@
+@token = <PASTE_A_VALID_TOKEN_FROM_LEXI_USERS_MS>
+
+DELETE http://localhost:8080/books/1
+Authorization: {{token}}
