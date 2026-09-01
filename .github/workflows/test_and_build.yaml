@@ -38,4 +38,6 @@ jobs:
       uses: docker/build-push-action@v7
       with:
         push: true
-        tags: ghcr.io/lucaslarroque95/lexi-book-ms:latest
+        tags: |
+          ghcr.io/lucaslarroque95/lexi-book-ms:latest
+          ghcr.io/lucaslarroque95/lexi-book-ms:${{ github.sha }}
